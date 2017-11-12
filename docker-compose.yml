@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: mongo:latest
+    environment:
+      MONGO_USER: 'root'
+      MONGO_PASSWORD: ''
+    ports:
+      - 27017:27017
+
+  server:
+    build: .
+    environment:
+      NODE_ENV: 'development'
+      DYNO: 'web.1'
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    command: npm run dev

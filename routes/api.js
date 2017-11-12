@@ -4,15 +4,16 @@ var router = express.Router();
 var lib = require('../lib/index.js');
 
 
-// addArticle <link> <published_at> <author> <title> <article>
+//DONE: addArticle <link> <published_at> <author> <title> <article>
 router.post('/addArticle', function (req, res, next) {
-  lib.articles.addArticle(req.body).then(function (result) {
+  lib.auth.decrypt(req.body).then(function (result) {
+    return lib.articles.addArticle(result);
+  }).then(function (result) {
     res.json({
       success: true,
       response: result
     });
   }).catch(function (error) {
-    console.log(error);
     res.status(400).json({
       success: false,
       response: 'request failed'
@@ -20,15 +21,29 @@ router.post('/addArticle', function (req, res, next) {
   });
 });
 
-// findArticle <search> <limit> <offset>
-router.post('/findArticles', function (req, res, next) {
-  lib.articles.findArticles(req.body).then(function (result) {
+//DONE: getArticle <[url]>
+router.post('/getArticles', function (req, res, next) {
+  lib.articles.getArticles(req.body).then(function (result) {
     res.json({
       success: true,
       response: result
     });
   }).catch(function (error) {
-    console.log(error);
+    res.status(400).json({
+      success: false,
+      response: 'request failed'
+    });
+  });
+});
+
+//CHECK: getArticlesByDate <start_date> <end_date>
+router.post('/getArticlesByDate', function (req, res, next) {
+  lib.articles.getArticlesByDate(req.body).then(function (result) {
+    res.json({
+      success: true,
+      response: result
+    });
+  }).catch(function (error) {
     res.status(400).json({
       success: false,
       response: 'request failed'
