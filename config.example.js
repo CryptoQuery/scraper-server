@@ -1,6 +1,8 @@
 
 var config = {};
 
+config.secret_key = '';
+
 if(process.env.NODE_ENV === 'production'){
   //production
   config.DB = process.env.DATABASE_URL;
