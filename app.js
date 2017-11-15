@@ -21,6 +21,7 @@ mongoose.connect(config.DB, {
 .catch(function (error) {
   console.error(error);
 });
+
 var app = express();
 
 //uncomment after placing your favicon in /public
