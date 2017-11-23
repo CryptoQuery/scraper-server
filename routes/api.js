@@ -3,6 +3,7 @@ var router = express.Router();
 
 var lib = require('../lib/index.js');
 
+//DONE: middleware <content>
 var middleware = function(req, res, next) {
   lib.auth.decrypt(req.body).then(function (result) {
     req.auth = result;
