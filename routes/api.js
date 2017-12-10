@@ -13,11 +13,11 @@ var middleware = function(req, res, next) {
       success: false,
       response: 'auth failed'
     });
-  })
+  });
 };
 
 
-//DONE: addArticle <link> <published_at> <author> <title> <article>
+//DONE: addArticle <link> <published_at> <author> <title> <description> <article>
 router.post('/addArticle', middleware, function (req, res, next) {
   lib.articles.addArticle(req.auth).then(function (result) {
     res.json({
@@ -25,6 +25,7 @@ router.post('/addArticle', middleware, function (req, res, next) {
       response: result
     });
   }).catch(function (error) {
+    console.log(error);
     res.status(400).json({
       success: false,
       response: 'request failed'
