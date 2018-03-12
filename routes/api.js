@@ -34,7 +34,7 @@ router.post('/addArticle', middleware, function (req, res, next) {
   });
 });
 
-//CHECK: addArticle (content) <article_id> <link> <image> <processed> <published_at> <author> <title> <description> <article>
+//CHECK: updateArticle (content) <article_id> <link> <image> <processed> <published_at> <author> <title> <description> <article>
 router.post('/updateArticle', middleware, function (req, res, next) {
   lib.articles.updateArticle(req.auth).then(function (result) {
     res.json({
