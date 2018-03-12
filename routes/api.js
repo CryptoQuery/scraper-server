@@ -17,7 +17,7 @@ var middleware = function(req, res, next) {
 };
 
 
-//DONE: addArticle <link> <published_at> <author> <title> <description> <article>
+//CHECK: addArticle <link> <image> <published_at> <author> <title> <description> <article>
 router.post('/addArticle', middleware, function (req, res, next) {
   lib.articles.addArticle(req.auth).then(function (result) {
     res.json({
@@ -66,6 +66,21 @@ router.post('/getArticlesByUrl', function (req, res, next) {
 //DONE: getArticlesByDate <start_date> <end_date>
 router.post('/getArticlesByDate', function (req, res, next) {
   lib.articles.getArticlesByDate(req.body).then(function (result) {
+    res.json({
+      success: true,
+      response: result
+    });
+  }).catch(function (error) {
+    res.status(400).json({
+      success: false,
+      response: 'request failed'
+    });
+  });
+});
+
+//CHECK: getArticlesByProcessed <processed>
+router.post('/getArticlesByProcessed', function(req, res, next) {
+  lib.articles.getArticlesByProcessed(req.body).then(function (result) {
     res.json({
       success: true,
       response: result
