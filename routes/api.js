@@ -3,6 +3,8 @@ var router = express.Router();
 
 var lib = require('../lib/index.js');
 
+// NOTE: () = authentication, <> = body parameter
+
 //DONE: middleware <content>
 var middleware = function(req, res, next) {
   lib.auth.decrypt(req.body).then(function (result) {
@@ -17,7 +19,7 @@ var middleware = function(req, res, next) {
 };
 
 
-//DONE: addArticle <link> <image> <published_at> <author> <title> <description> <article>
+//DONE: addArticle (content) <link> <image> <published_at> <author> <title> <description> <article>
 router.post('/addArticle', middleware, function (req, res, next) {
   lib.articles.addArticle(req.auth).then(function (result) {
     res.json({
@@ -25,7 +27,21 @@ router.post('/addArticle', middleware, function (req, res, next) {
       response: result
     });
   }).catch(function (error) {
-    console.log(error);
+    res.status(400).json({
+      success: false,
+      response: 'request failed'
+    });
+  });
+});
+
+//CHECK: addArticle (content) <article_id> <link> <image> <processed> <published_at> <author> <title> <description> <article>
+router.post('/updateArticle', middleware, function (req, res, next) {
+  lib.articles.updateArticle(req.auth).then(function (result) {
+    res.json({
+      success: true,
+      response: result
+    });
+  }).catch(function (error) {
     res.status(400).json({
       success: false,
       response: 'request failed'
