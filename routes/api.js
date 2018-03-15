@@ -79,7 +79,7 @@ router.post('/getArticlesByUrl', function (req, res, next) {
   });
 });
 
-//DONE: getArticlesByDate <start_date> <end_date>
+//DONE: getArticlesByDate <start_date> <end_date> <limit> <offset>
 router.post('/getArticlesByDate', function (req, res, next) {
   lib.articles.getArticlesByDate(req.body).then(function (result) {
     res.json({
@@ -94,7 +94,7 @@ router.post('/getArticlesByDate', function (req, res, next) {
   });
 });
 
-//DONE: getArticlesByProcessed <processed>
+//DONE: getArticlesByProcessed <processed> <limit> <offset>
 router.post('/getArticlesByProcessed', function(req, res, next) {
   lib.articles.getArticlesByProcessed(req.body).then(function (result) {
     res.json({
