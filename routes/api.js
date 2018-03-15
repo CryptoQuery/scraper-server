@@ -35,7 +35,7 @@ router.post('/addArticle', middleware, function (req, res, next) {
 });
 
 //CHECK: updateArticle (content) <article_id> <link> <image> <processed> <published_at> <author> <title> <description> <article>
-router.post('/updateArticle', middleware, function (req, res, next) {
+/*router.post('/updateArticle', middleware, function (req, res, next) {
   lib.articles.updateArticle(req.auth).then(function (result) {
     res.json({
       success: true,
@@ -47,7 +47,7 @@ router.post('/updateArticle', middleware, function (req, res, next) {
       response: 'request failed'
     });
   });
-});
+});*/
 
 //DONE: getArticles <[article_id]>
 router.post('/getArticles', function (req, res, next) {
