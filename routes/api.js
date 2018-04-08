@@ -34,20 +34,21 @@ router.post('/addArticle', middleware, function (req, res, next) {
   });
 });
 
-//CHECK: updateArticle (content) <article_id> <link> <image> <processed> <published_at> <author> <title> <description> <article>
-/*router.post('/updateArticle', middleware, function (req, res, next) {
+//DONE: updateArticle (content) <article_id> <link> <image> <processed> <published_at> <author> <title> <description> <article>
+router.post('/updateArticle', middleware, function (req, res, next) {
   lib.articles.updateArticle(req.auth).then(function (result) {
     res.json({
       success: true,
       response: result
     });
   }).catch(function (error) {
+    console.log(error);
     res.status(400).json({
       success: false,
       response: 'request failed'
     });
   });
-});*/
+});
 
 //DONE: getArticles <[article_id]>
 router.post('/getArticles', function (req, res, next) {

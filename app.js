@@ -13,7 +13,6 @@ var config = require('./config.js');
 // Connect to DB and add models
 mongoose.Promise = q.Promise;
 mongoose.connect(config.DB, {
-  useMongoClient: true,
   config: {
     autoIndex: false
   }
