@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     image: mongo:latest
+    container_name: cryptoquery-mongo-db
     environment:
       MONGO_USER: 'root'
       MONGO_PASSWORD: ''
@@ -10,6 +11,8 @@ services:
 
   server:
     build: .
+    image: node:latest
+    container_name: cryptoquery-server
     environment:
       NODE_ENV: 'development'
       DYNO: 'web.1'

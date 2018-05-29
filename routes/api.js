@@ -42,7 +42,6 @@ router.post('/updateArticle', middleware, function (req, res, next) {
       response: result
     });
   }).catch(function (error) {
-    console.log(error);
     res.status(400).json({
       success: false,
       response: 'request failed'
