@@ -1,5 +1,11 @@
-# Crypto Query Bot Server  
-  
+# CryptoQuery Scraper Server  
+This server is used by the CrytpoQuery scraper bot and other applications to get, change, and store article data 
+pulled in from the scraper bot.  
+## Start Application  
+Build:  
+`npm install`  
+Start:  
+`npm start`  
 ## IP Address  
   * 104.131.149.181  
   
